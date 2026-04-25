@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Suppression de compte — Yemba Tafy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream: #faf8f4;
+      --ink: #1a1814;
+      --muted: #6b6560;
+      --accent: #8b6f47;
+      --line: #e8e2d9;
+      --white: #ffffff;
+      --warning: #c0392b;
+      --warning-bg: #fdf5f4;
+    }
+
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--cream);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.8;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    header {
+      background: var(--white);
+      border-bottom: 1px solid var(--line);
+      padding: 2.5rem 0 2rem;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      animation: fadeDown 0.6s ease both;
+    }
+
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .app-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .page-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      font-weight: 300;
+      color: var(--ink);
+      margin-top: 0.25rem;
+    }
+
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.4rem 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 0.8rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+      animation: fadeIn 0.8s 0.2s ease both;
+    }
+
+    .content {
+      padding: 3.5rem 0 5rem;
+      animation: fadeIn 0.8s 0.4s ease both;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .intro {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-style: italic;
+      color: var(--muted);
+      border-left: 2px solid var(--accent);
+      padding-left: 1.5rem;
+      margin-bottom: 3rem;
+      line-height: 1.9;
+    }
+
+    section { margin-bottom: 2.8rem; }
+
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.45rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 0.9rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    h2 .num {
+      font-size: 0.75rem;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+      background: #f0ebe3;
+      padding: 0.15rem 0.5rem;
+      border-radius: 2px;
+    }
+
+    p {
+      color: #3d3a35;
+      margin-bottom: 0.9rem;
+      font-size: 0.97rem;
+    }
+
+    ul {
+      list-style: none;
+      margin: 0.6rem 0 0.9rem;
+      padding: 0;
+    }
+
+    ul li {
+      padding: 0.35rem 0 0.35rem 1.4rem;
+      position: relative;
+      font-size: 0.95rem;
+      color: #3d3a35;
+    }
+
+    ul li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+
+    /* Étapes numérotées */
+    .steps {
+      counter-reset: step;
+      list-style: none;
+      padding: 0;
+      margin: 1.2rem 0;
+    }
+
+    .steps li {
+      counter-increment: step;
+      padding: 1rem 1rem 1rem 3.5rem;
+      position: relative;
+      border-left: 1px solid var(--line);
+      margin-bottom: 0.6rem;
+      background: var(--white);
+      font-size: 0.95rem;
+      color: #3d3a35;
+    }
+
+    .steps li::before {
+      content: counter(step);
+      position: absolute;
+      left: -1px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 2.2rem;
+      height: 2.2rem;
+      background: var(--accent);
+      color: white;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 0 2px 2px 0;
+    }
+
+    /* Bloc attention */
+    .warning-block {
+      background: var(--warning-bg);
+      border: 1px solid #e8c4c0;
+      border-left: 3px solid var(--warning);
+      padding: 1.2rem 1.6rem;
+      border-radius: 2px;
+      margin: 1rem 0 1.5rem;
+    }
+
+    .warning-block .warn-title {
+      font-weight: 500;
+      color: var(--warning);
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .warning-block p {
+      margin-bottom: 0;
+      font-size: 0.92rem;
+      color: #5a2a26;
+    }
+
+    /* Bloc contact */
+    .contact-block {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-left: 3px solid var(--accent);
+      padding: 1.5rem 1.8rem;
+      border-radius: 2px;
+      margin-top: 1rem;
+    }
+
+    .contact-block p { margin-bottom: 0.4rem; }
+
+    .contact-block a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 400;
+    }
+
+    .contact-block a:hover { text-decoration: underline; }
+
+    /* Info block */
+    .info-block {
+      background: var(--white);
+      border: 1px solid var(--line);
+      padding: 1.2rem 1.6rem;
+      border-radius: 2px;
+      margin: 1rem 0;
+      font-size: 0.92rem;
+      color: #3d3a35;
+    }
+
+    footer {
+      background: var(--white);
+      border-top: 1px solid var(--line);
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+
+    footer strong { color: var(--accent); font-weight: 500; }
+
+    footer a { color: var(--accent); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <div class="app-name">Yemba Tafy</div>
+      <h1 class="page-title">Suppression de compte</h1>
+    </div>
+  </header>
+
+  <div class="container">
+
+    <div class="meta">
+      <span>Contributeurs uniquement</span>
+      <span>Dernière mise à jour : Avril 2025</span>
+    </div>
+
+    <div class="content">
+
+      <p class="intro">
+        Seuls les utilisateurs ayant créé un compte pour contribuer au dictionnaire Yemba sont concernés par cette page. 
+        Si vous utilisez l'application uniquement pour traduire, aucun compte n'existe vous concernant.
+      </p>
+
+      <!-- Section 1 -->
+      <section id="s1">
+        <h2><span class="num">01</span> Qui est concerné ?</h2>
+        <p>
+          L'application Yemba Tafy ne requiert aucune inscription pour être utilisée. La création d'un compte est uniquement nécessaire pour <strong>contribuer au dictionnaire</strong> (ajouter ou suggérer des mots et traductions).
+        </p>
+        <p>
+          Si vous n'avez jamais créé de compte, il n'y a aucune donnée personnelle associée à votre utilisation de l'application.
+        </p>
+      </section>
+
+      <!-- Section 2 -->
+      <section id="s2">
+        <h2><span class="num">02</span> Ce qui est supprimé</h2>
+        <p>Lors de la suppression de votre compte, les données suivantes sont effacées de nos systèmes :</p>
+        <ul>
+          <li>Vos identifiants de connexion (e-mail, mot de passe chiffré).</li>
+          <li>Toute information personnelle associée à votre profil de contributeur.</li>
+          <li>L'historique de vos sessions de connexion.</li>
+        </ul>
+
+        <div class="warning-block">
+          <div class="warn-title">⚠ À noter</div>
+          <p>
+            Les mots et traductions que vous avez contribués au dictionnaire sont du <strong>contenu public</strong> destiné à la préservation de la langue Yemba. Ils peuvent être conservés dans le dictionnaire même après la suppression de votre compte, mais sans aucune association à votre identité.
+          </p>
+        </div>
+      </section>
+
+      <!-- Section 3 -->
+      <section id="s3">
+        <h2><span class="num">03</span> Comment supprimer votre compte</h2>
+        <p>La suppression de compte se fait directement depuis l'application en quelques étapes :</p>
+
+        <ol class="steps">
+          <li>Ouvrez l'application <strong>Yemba Tafy</strong> et connectez-vous à votre compte.</li>
+          <li>Accédez aux <strong>Paramètres</strong> depuis le menu principal.</li>
+          <li>Appuyez sur <strong>« Mon compte »</strong>.</li>
+          <li>Sélectionnez <strong>« Supprimer mon compte »</strong> en bas de la page.</li>
+          <li>Confirmez votre choix. La suppression est immédiate et irréversible.</li>
+        </ol>
+      </section>
+
+      <!-- Section 4 -->
+      <section id="s4">
+        <h2><span class="num">04</span> Suppression par e-mail</h2>
+        <p>
+          Si vous n'avez plus accès à votre compte ou si vous rencontrez un problème, vous pouvez nous envoyer une demande de suppression par e-mail. Précisez l'adresse associée à votre compte.
+        </p>
+        <div class="contact-block">
+          <p><strong>Demande de suppression</strong></p>
+          <p>E-mail : <a href="mailto:contact@schemaly.app">contact@schemaly.app</a></p>
+          <p style="margin-top:0.6rem; font-size:0.88rem; color:var(--muted);">Objet suggéré : <em>« Suppression de compte Yemba Tafy »</em></p>
+          <p style="font-size:0.88rem; color:var(--muted);">Délai de traitement : sous 7 jours ouvrés.</p>
+        </div>
+      </section>
+
+      <!-- Section 5 -->
+      <section id="s5">
+        <h2><span class="num">05</span> Après la suppression</h2>
+        <div class="info-block">
+          Une fois votre compte supprimé, vous pouvez continuer à utiliser Yemba Tafy librement pour consulter les traductions, sans aucun compte. Si vous souhaitez contribuer à nouveau au dictionnaire dans le futur, vous pourrez créer un nouveau compte à tout moment.
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 <strong>Yemba Tafy</strong>. Tous droits réservés.</p>
+    <p style="margin-top:0.4rem;">
+      <a href="politique-confidentialite-yemba-tafy.html">Politique de confidentialité</a>
+      &nbsp;·&nbsp;
+      <a href="mailto:contact@schemaly.app">contact@schemaly.app</a>
+    </p>
+  </footer>
+
+</body>
+</html>
